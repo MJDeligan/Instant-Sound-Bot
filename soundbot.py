@@ -9,11 +9,11 @@ import json
 import aiosqlite
 import pydub
 
-
+import token
 import bot_config
 
 FILE_DIR = bot_config.FILE_DIR
-BOT_TOKEN = bot_config.BOT_TOKEN
+BOT_TOKEN = token.BOT_TOKEN
 SOUND_PLAYER_DIR = bot_config.SOUND_PLAYER_DIR
 COMMAND_PREFIX = bot_config.COMMAND_PREFIX
 DEFAULT_BAN_DURATION = bot_config.DEFAULT_BAN_DURATION
