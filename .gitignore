@@ -3,4 +3,4 @@ __pycache__
 banned.db
 /ffmpeg
 /sounds
-token.py
+token_discord.py
