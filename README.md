@@ -16,7 +16,7 @@ or
 6. Configure the bot in the bot_config.py file  
 7. Add your bot's token in the token_discord.py  
 &nbsp;  
-If you don't have a bot account setup yet visit    
+If you don't have a bot account setup yet visit:  
 > https://discord.com/developers/docs/intro
 
 
