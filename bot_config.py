@@ -2,9 +2,6 @@
 #e.g FILE_DIR = "media/sounds"
 FILE_DIR = "sounds"
 
-
-BOT_TOKEN = ""
-
 # the path to the sound player executable
 SOUND_PLAYER_DIR = "ffmpeg/bin/ffmpeg"
 
