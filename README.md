@@ -5,7 +5,7 @@ It also supports banning users from using the using without completly banning th
 ## How to use  
 1. Clone the repository
 3. Get Python version 3.8 or higher  
-> https://www.python.org/
+```https://www.python.org/```
 4. Get an executable to play the sound files. (e.g ffmpeg)
 > https://ffmpeg.org/
 5. Install the required libraries by going in to the terminal and typing  
