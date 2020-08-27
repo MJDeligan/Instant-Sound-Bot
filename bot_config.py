@@ -25,5 +25,5 @@ ALLOW_SWITCH_CHANNELS = True
 # a list of roles that get the right to ban and unban people
 # server admins automatically get these rights
 ADMIN_ROLES = set([
-    "soundadmin"
+    "soundadmin",
 ])
