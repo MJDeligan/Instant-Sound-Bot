@@ -21,3 +21,9 @@ SEND_ERROR_MESSAGES = True
 # set whether the bot is allowed to switch channels if a user from another channel than the bot is in
 # requests it to join the channel
 ALLOW_SWITCH_CHANNELS = True
+
+# a list of roles that get the right to ban and unban people
+# server admins automatically get these rights
+ADMIN_ROLES = set([
+    "soundadmin"
+])
