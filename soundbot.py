@@ -45,6 +45,19 @@ async def play(ctx, soundName : str, playCount=1):
         return
     await play_func(ctx, soundName, playCount = playCount)
 
+@bot.command(
+    help="Stops the sound that is currently playing",
+    brief="Stops the sound that is currently playing"
+)
+async def stop(ctx):
+    voiceClient = ctx.guild.voice_client
+    if await isBanned(ctx.guild.id, ctx.author.id):
+        if ERRORS: await ctx.send("Cannot use leave command because you are banned")
+        return
+    if not voiceClient:
+        if ERRORS: await ctx.send('```Not connected to voice or you\'re not in the right channel```')
+        return
+    voiceClient.stop()
 
 @bot.command(
     help="Instantly makes the bot leave the channel you're currently in, stopping any sound that is being played",
@@ -52,6 +65,9 @@ async def play(ctx, soundName : str, playCount=1):
 )
 async def leave(ctx):
     voiceClient = ctx.guild.voice_client
+    if await isBanned(ctx.guild.id, ctx.author.id):
+        if ERRORS: await ctx.send("Cannot use leave command because you are banned")
+        return
     if not voiceClient:
         if ERRORS: await ctx.send('```Not connected to voice or you\'re not in the right channel```')
         return
