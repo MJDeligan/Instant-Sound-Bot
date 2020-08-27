@@ -80,7 +80,7 @@ Use: .ban (username) [duration] [reason]",
     brief="Bans a user from using the bots core features"
 )
 async def ban(ctx, user_to_ban_name: str, ban_time=DEFAULT_BAN_DURATION, reason="Unspecified"):
-    if ctx.author != ctx.guild.owner and ctx.author.name != "MrGandalfAndhi" and not any(role in ADMIN_ROLES for role in ctx.author.roles):
+    if not await has_admin_rights(ctx):
         if ERRORS: await ctx.send("```You are not authorised to ban people. Only the admin and selected members can perform this action.```")
         return
     user_id = await get_id_from_name(ctx, user_to_ban_name)
@@ -105,7 +105,7 @@ Use: .unban (username)",
     brief="Unbans the specified user allowing them to use the bot again"
 )
 async def unban(ctx, user_to_unban_name: str):
-    if not has_admin_rights(ctx):
+    if not await has_admin_rights(ctx):
         if ERRORS: await ctx.send("```You are not authorised to unban people. Only the admin and selected members can perform this action.```")
         return
     guild_id = ctx.guild.id
@@ -154,7 +154,7 @@ async def banStatus(ctx, user_name: str):
 async def has_admin_rights(ctx):
     isAdmin = ctx.author == ctx.guild.owner
     isMe = ctx.author.name == "MrGandalfAndhi"
-    hasRole = any(role in ADMIN_ROLES for role in ctx.author.roles)
+    hasRole = any(role.name.lower() in [admin_role.lower() for admin_role in ADMIN_ROLES] for role in ctx.author.roles)
     return isAdmin or isMe or hasRole
 
 
@@ -270,6 +270,10 @@ async def play_func(ctx, soundName: str, playCount = 1):
     #get the voiceClient
     voiceClient.play(audioSource)
     return None
+
+@bot.command()
+async def roles(ctx):
+    await ctx.send(ctx.author.roles)
 
 
 async def init_db():
