@@ -52,7 +52,7 @@ async def play(ctx, soundName : str, playCount=1):
 async def stop(ctx):
     voiceClient = ctx.guild.voice_client
     if await isBanned(ctx.guild.id, ctx.author.id):
-        if ERRORS: await ctx.send("Cannot use leave command because you are banned")
+        if ERRORS: await ctx.send("Cannot use stop command because you are banned")
         return
     if not voiceClient:
         if ERRORS: await ctx.send('```Not connected to voice or you\'re not in the right channel```')
