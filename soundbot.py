@@ -7,7 +7,7 @@ from discord.ext import commands
 import asyncio
 import json
 import aiosqlite
-import pydub
+from pydub import AudioSegment
 
 from token_discord import BOT_TOKEN
 import bot_config
@@ -272,12 +272,10 @@ async def play_func(ctx, soundName: str, playCount = 1):
     while voiceClient.is_playing():
         await asyncio.sleep(0.1)
     soundName = FILE_DIR + "/" + soundName + '.mp3'
-    with open(FILE_DIR + "/output.mp3", "wb") as outputFile, \
-         open(soundName, "rb") as fileToCopy:
-        binaryData = fileToCopy.read()
-        #writes the sound binary data into outputfile "playCount" times
-        multipliedBinaryData = playCount*binaryData
-        outputFile.write(multipliedBinaryData)
+    # pydub audio manipulation to repeat sound multiple times
+    sound = AudioSegment.from_mp3(soundName)
+    multiplied_sound = sound * playCount
+    multiplied_sound.export(FILE_DIR + "/output.mp3", format="mp3")
     #create a new playable audiosource from the soundfile
     audioSource = discord.FFmpegPCMAudio(
         FILE_DIR+"/output.mp3",
@@ -298,6 +296,7 @@ async def init_db():
     await db.commit()
     return
 
+AudioSegment.ffmpeg = SOUND_PLAYER_DIR
 asyncio.run(init_db())
 bot.run(BOT_TOKEN)
 
