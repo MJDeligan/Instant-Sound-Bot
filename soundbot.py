@@ -169,9 +169,8 @@ async def banStatus(ctx, user_name: str):
 
 async def has_admin_rights(ctx):
     isAdmin = ctx.author == ctx.guild.owner
-    isMe = ctx.author.name == "MrGandalfAndhi"
     hasRole = any(role.name.lower() in [admin_role.lower() for admin_role in ADMIN_ROLES] for role in ctx.author.roles)
-    return isAdmin or isMe or hasRole
+    return isAdmin or hasRole
 
 
 # gets the list of all the mp3 files in the file directory
