@@ -1,6 +1,6 @@
 # Discord.py-Simple-SoundBot
 This bot can be used to play sounds of your choice on multiple servers.  
-It also supports banning users from using the using without completly banning them from the server.  
+It also supports banning users from using the bot without completly banning them from the server.  
 #### You need to download the sounds you want to play yourself, this bot does not come with any pre-installed sounds
 ## How to use  
 1. Clone the repository
